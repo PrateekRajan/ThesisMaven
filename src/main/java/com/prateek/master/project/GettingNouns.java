@@ -59,7 +59,7 @@ public class GettingNouns {
 		    if (temp[i].endsWith("NN") || temp[i].endsWith("NNS")) {
 			nouns.add(temp[i].substring(0, temp[i].indexOf("/")));
 		    }
-		    if (temp[i].endsWith("JJ") || temp[i].endsWith("VBP")) {
+		    if (temp[i].endsWith("JJ")) {
 			adjective.add(temp[i].substring(0, temp[i].indexOf("/")));
 			l++;
 		    }
@@ -71,7 +71,7 @@ public class GettingNouns {
 		System.out.println(nouns.get(k));// Displaying nouns
 
 	    }
-	    System.out.println("The Adjectives and verbs in the sentence are :");
+	    System.out.println("The Adjectives in the sentence are :");
 	    for (l = 0; l < adjective.size(); l++) {
 		System.out.println(adjective.get(l));// Displaying
 						     // adjectives.

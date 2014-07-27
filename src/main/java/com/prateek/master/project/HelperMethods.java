@@ -37,7 +37,9 @@ public class HelperMethods {
 	    in.close();
 	    String[] reviewSentences = review.split("\\.\\/\\.");
 	    for (String sentence : reviewSentences) {
-		structure.add(sentence);
+		if (HelperMethods.isPresentAdjective(sentence) && HelperMethods.isPresentFeature(sentence)) {
+		    structure.add(sentence);
+		}
 	    }
 	} catch (Throwable ex) {
 	    LOGGER.error("Error reading file " + ex.toString() + new java.util.Date());
@@ -104,7 +106,6 @@ public class HelperMethods {
     static boolean isFeature(String input) {
 	boolean isFeature = false;
 	try {
-
 	    FileInputStream fstream = new FileInputStream("src\\main\\resources\\data\\test\\FeatureDatabase.txt");
 	    DataInputStream in = new DataInputStream(fstream);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -151,8 +152,6 @@ public class HelperMethods {
 			    System.out.println(distance);
 			    temp = " ";
 			    temp = arr[i + 3] + " " + arr[i + 1];
-			    // output.append(arr[i + 3]).append(" ")
-			    // .append(arr[i + 1]);
 			}
 		    }
 		}
@@ -235,6 +234,7 @@ public class HelperMethods {
 	for (int i = 0; i < structureArr.length; i++) {
 	    if (structureArr[i].contains(feature)) {
 		feature_index = i;
+		break;
 	    }
 	}
 	for (int i = 0; i < structureArr.length; i++) {
@@ -292,17 +292,18 @@ public class HelperMethods {
 		}
 	    }
 	    br.close();
-	} catch (FileNotFoundException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	} catch (IOException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
+	} catch (FileNotFoundException ex) {
+	    LOGGER.error("Something went wrong in isNegative method " + ex.toString() + " " + new java.util.Date());
+	} catch (IOException ex) {
+	    LOGGER.error("Something went wrong in isNegative method " + ex.toString() + " " + new java.util.Date());
 	}
+	LOGGER.info("isNegative method executed successfully " + new java.util.Date());
 	return isNegative;
     }
 
     static void addToMap(String feature, String opinion, boolean isNegative) {
+	System.out.println(feature + " " + opinion);
+
 	if (isNegative && isPositive(opinion)) {
 	    opinion = "bad";
 	} else if (isNegative && isNegative(opinion)) {
