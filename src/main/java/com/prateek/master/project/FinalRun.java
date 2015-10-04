@@ -24,9 +24,7 @@ public class FinalRun {
 	    System.out.println("I am tdl " + tdl.toString());
 	    FeatureExtraction object = new FeatureExtraction();
 	    ArrayList<String> structure = HelperMethods.getStructure();
-	    // System.out.println("TDL size " + tdl.size() + " structure size "
-	    // + structure.size());
-	    // System.out.println("I am structu " + structure);
+	    
 	    for (int i = 0; i < tdl.size(); i++) {
 		object.generateFeatures("camera", tdl.get(i), structure.get(i));
 	    }

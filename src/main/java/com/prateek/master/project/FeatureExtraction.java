@@ -29,11 +29,11 @@ public class FeatureExtraction {
 				if (HelperMethods.isNoun(arr[second_element + 3])) {
 				    // System.out.println("I am from nsubj " +
 				    // arr[first_element + 3]);
-				    SharedLists.features.add(arr[second_element + 3]);
+				    SharedLists.features.add(arr[first_element + 3]);
 				} else if (HelperMethods.isNoun(arr[first_element + 3])) {
 				    // System.out.println("I am from nsubj " +
 				    // arr[first_element + 3]);
-				    SharedLists.features.add(arr[first_element + 3]);
+				    SharedLists.features.add(arr[second_element + 3]);
 				}
 			    } else {
 				if (compositeFeature.contains(arr[second_element + 3])) {

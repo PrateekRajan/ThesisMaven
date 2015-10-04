@@ -1,4 +1,3 @@
 viewfinder
 lens
-strap
 clicker

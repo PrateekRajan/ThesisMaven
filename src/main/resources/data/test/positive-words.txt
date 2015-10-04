@@ -963,6 +963,7 @@ hot
 hotcake
 hotcakes
 hottest
+high
 hug
 humane
 humble

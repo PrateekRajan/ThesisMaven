@@ -22,6 +22,8 @@ public class OpinionExtraction {
 		while (counter < TDL.size()) {
 		    String arr[] = TDL.get(counter).split(" ");
 		    for (int i = 0; i < arr.length; i++) {
+			// System.out.println(feature + " " + arr[i] + " " +
+			// arr[i + 1] + " " + arr[i + 3]);
 			if (arr[i].equals("nsubj") && feature.contains(arr[i + 3]) && HelperMethods.isAdjective(arr[i + 1])) {
 			    if (HelperMethods.isNeg(TDL.get(counter)).contains(arr[i + 1])) {
 				HelperMethods.addToMap(feature, arr[i + 1], true);
@@ -31,7 +33,7 @@ public class OpinionExtraction {
 				extracted = true;
 			    }
 			}
-			if (arr[i].equals("amod") && feature.contains(arr[i + 1]) && HelperMethods.isAdjective(arr[i + 3])) {
+			if (arr[i].contains("amod") && feature.contains(arr[i + 1]) && HelperMethods.isAdjective(arr[i + 3])) {
 			    if (HelperMethods.isNeg(TDL.get(counter)).contains(arr[i + 3])) {
 				HelperMethods.addToMap(feature, arr[i + 3], true);
 				extracted = true;

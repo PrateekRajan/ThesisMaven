@@ -168,8 +168,12 @@ public class HelperMethods {
 	for (int i = 0; i < arr.length; i++) {
 	    if ((arr[i].trim().equals("nn") && isFeature(arr[i + 1]) && !isFeature(arr[i + 3]))
 		    || (arr[i].trim().equals("nn") && isFeature(arr[i + 3]) && !isFeature(arr[i + 1]))) {
-		if (Math.abs(GettingNouns.sentence.indexOf(arr[i + 1]) - GettingNouns.sentence.indexOf(arr[i + 3])) <= arr[i + 1].length() + 1) {
-		    output.append(arr[i + 3]).append(" ").append(arr[i + 1]);
+		String[] sentenceArr = GettingNouns.sentence.split("\\.");
+		for (String sentence : sentenceArr) {
+		    if (Math.abs(sentence.indexOf(arr[i + 1]) - sentence.indexOf(arr[i + 3])) <= arr[i + 3].length() + 1) {
+			output.append(arr[i + 3]).append(" ").append(arr[i + 1]);
+			break;
+		    }
 		}
 	    }
 	}
